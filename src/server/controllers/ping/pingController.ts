@@ -1,10 +1,10 @@
 import type { Request, Response } from "express";
 
 const ping = (req: Request, res: Response) => {
-  const status = 200;
-  const message = "🏓 Pong";
+  const statusCode = 200;
+  const expectedMessage = "🏓 Pong";
 
-  res.status(status).json({ message });
+  res.status(statusCode).json({ message: expectedMessage });
 };
 
 export default ping;
