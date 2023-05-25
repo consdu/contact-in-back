@@ -9,7 +9,7 @@ import {
 } from "./middlewares/errorMiddlewares/errorMiddlewares.js";
 import ping from "./controllers/ping/pingController.js";
 
-import userRouter from "./routers/user/useRouter.js";
+import userRouter from "./routers/user/userRouter.js";
 
 const debug = createDebug("contacts-api:root:server");
 
