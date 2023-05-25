@@ -1,7 +1,7 @@
 import type {
   UserDatabaseStructure,
   UserLoginDataStructure,
-} from "../../server/types";
+} from "../../types";
 import { Types } from "mongoose";
 export const userLoginMock: UserLoginDataStructure = {
   username: "admin",
