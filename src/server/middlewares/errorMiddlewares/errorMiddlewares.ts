@@ -1,6 +1,8 @@
-import type { Request, Response, NextFunction } from "express";
-import CustomError from "../../../CustomError/CustomError.js";
 import createDebug from "debug";
+import chalk from "chalk";
+import type { Request, Response, NextFunction } from "express";
+import { ValidationError } from "express-validation";
+import CustomError from "../../../CustomError/CustomError.js";
 
 const debug = createDebug(
   "contacts-api:root:server:middleware:errorMiddlewares"
@@ -22,7 +24,18 @@ export const generalError = (
   res: Response,
   _next: NextFunction
 ) => {
-  debug(error.message);
+  debug(chalk.redBright(error.message));
+
+  if (error instanceof ValidationError) {
+    const validationErrorMessages = error.details.body
+      ?.map((joiError) => joiError.message)
+      .join(" & ")
+      .replaceAll('"', "");
+
+    (error as CustomError).publicMessage = validationErrorMessages;
+
+    debug(chalk.redBright(validationErrorMessages));
+  }
 
   const statusCode = error.statusCode ?? 500;
   const publicMessage = error.statusCode

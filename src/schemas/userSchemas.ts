@@ -3,7 +3,7 @@ import type { UserLoginDataStructure } from "../types";
 
 export const loginSchema = {
   body: Joi.object<UserLoginDataStructure>({
-    username: Joi.object().required(),
-    password: Joi.object().required(),
+    username: Joi.string().required(),
+    password: Joi.string().required(),
   }),
 };
