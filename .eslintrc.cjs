@@ -17,6 +17,12 @@ module.exports = {
         ],
       },
     },
+    {
+      files: ["src/**/models/*.ts"],
+      rules: {
+        "@typescript-eslint/naming-convention": "off",
+      },
+    },
   ],
   parserOptions: {
     ecmaVersion: "latest",

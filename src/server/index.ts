@@ -8,6 +8,7 @@ import {
   notFoundError,
 } from "./middlewares/errorMiddlewares/errorMiddlewares.js";
 import ping from "./controllers/ping/pingController.js";
+import { loginUser } from "./controllers/user/userController.js";
 
 const debug = createDebug("contacts-api:root:server");
 
@@ -33,6 +34,8 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 app.get("/", ping);
+
+app.get("/user/login", loginUser);
 
 app.use(notFoundError);
 
