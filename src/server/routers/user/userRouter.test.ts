@@ -18,6 +18,13 @@ interface CustomResponse {
   statusCode: number;
 }
 
+interface CustomErrorResponse {
+  body: {
+    error: string;
+  };
+  statusCode: number;
+}
+
 beforeAll(async () => {
   server = await MongoMemoryServer.create();
   await connectToDatabase(server.getUri());
@@ -33,11 +40,11 @@ afterEach(async () => {
 });
 
 describe("Given a POST /user/login endpoint", () => {
-  describe("When it receives valid credentials", () => {
-    beforeEach(async () => {
-      await User.create(userDatabaseMock);
-    });
+  beforeEach(async () => {
+    await User.create(userDatabaseMock);
+  });
 
+  describe("When it receives valid credentials", () => {
     test("Then it should respond with status code 200 and the user's token", async () => {
       const expectedStatusCode = 200;
 
@@ -54,6 +61,23 @@ describe("Given a POST /user/login endpoint", () => {
       const userId = payload.sub as string;
 
       expect(userId).toBe(newUser?._id.toString());
+    });
+  });
+
+  describe("When it receives invalid credentials", () => {
+    test("Then it should respond with 401 and 'Wrong credentials' message", async () => {
+      const expectedStatusCode = 401;
+      const expectedMessage = "Wrong credentials";
+
+      const response: CustomErrorResponse = await request(app)
+        .post("/user/login")
+        .send({
+          ...userLoginMock,
+          username: "wrong_username",
+        })
+        .expect(expectedStatusCode);
+
+      expect(response.body.error).toBe(expectedMessage);
     });
   });
 });
