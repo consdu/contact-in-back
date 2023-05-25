@@ -7,6 +7,7 @@ import {
   generalError,
   notFoundError,
 } from "./middlewares/errorMiddlewares/errorMiddlewares.js";
+import ping from "./controllers/ping/pingController.js";
 
 const debug = createDebug("contacts-api:root:server");
 
@@ -30,6 +31,8 @@ app.use(cors(options));
 app.use(express.json());
 
 app.use(morgan("dev"));
+
+app.get("/ping", ping);
 
 app.use(notFoundError);
 
