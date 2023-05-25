@@ -5,6 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "test": "jest",
+    "test:dev": "jest --watchAll",
+    "test:coverage": "jest --coverage",
     "build": "tsc",
     "build:dev": "tsc --watch",
     "start": "node --watch dist",
