@@ -32,7 +32,7 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
-app.get("/ping", ping);
+app.get("/", ping);
 
 app.use(notFoundError);
 
