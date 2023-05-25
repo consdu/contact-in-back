@@ -1,7 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import type { NextFunction, Response } from "express";
-import type { UserLoginRequestStructure } from "../../types";
+import type { UserLoginRequestStructure } from "../../../types";
 import {
   tokenMock,
   userDatabaseMock,
