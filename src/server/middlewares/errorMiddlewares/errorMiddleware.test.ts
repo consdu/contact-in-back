@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
 import CustomError from "../../../CustomError/CustomError";
-import { generalError } from "./errorMiddlewares";
+import { generalError, notFoundError } from "./errorMiddlewares";
 
 type CustomResponse = Pick<Response, "status" | "json">;
 
@@ -46,6 +46,22 @@ describe("Given a generalError middleware", () => {
 
       expect(response.status).toHaveBeenCalledWith(statusCode);
       expect(response.json).toHaveBeenCalledWith({ error: publicMessage });
+    });
+  });
+});
+
+describe("Given a notFoundError middleware", () => {
+  describe("When called with a next function", () => {
+    test("Then it should call the received next function with a custom error", () => {
+      const expectedError = new CustomError(404, "Endpoint not found");
+
+      notFoundError(
+        request as Request,
+        response as Response,
+        next as NextFunction
+      );
+
+      expect(next).toHaveBeenCalledWith(expectedError);
     });
   });
 });
