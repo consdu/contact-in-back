@@ -3,6 +3,7 @@ import morgan from "morgan";
 import createDebug from "debug";
 import chalk from "chalk";
 import cors from "cors";
+import { generalError } from "./middlewares/errorMiddlewares/errorMiddlewares.js";
 
 const debug = createDebug("contacts-api:root:server");
 
@@ -26,5 +27,7 @@ app.use(cors(options));
 app.use(express.json());
 
 app.use(morgan("dev"));
+
+app.use(generalError);
 
 export default app;
