@@ -3,14 +3,13 @@ import morgan from "morgan";
 import createDebug from "debug";
 import chalk from "chalk";
 import cors from "cors";
-import { validate } from "express-validation";
 import {
   generalError,
   notFoundError,
 } from "./middlewares/errorMiddlewares/errorMiddlewares.js";
 import ping from "./controllers/ping/pingController.js";
-import { loginUser } from "./controllers/user/userController.js";
-import { loginSchema } from "../schemas/userSchemas.js";
+
+import userRouter from "./routers/user/useRouter.js";
 
 const debug = createDebug("contacts-api:root:server");
 
@@ -37,11 +36,7 @@ app.use(morgan("dev"));
 
 app.get("/", ping);
 
-app.get(
-  "/user/login",
-  validate(loginSchema, {}, { abortEarly: false }),
-  loginUser
-);
+app.use("/user", userRouter);
 
 app.use(notFoundError);
 

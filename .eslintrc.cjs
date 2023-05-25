@@ -15,6 +15,12 @@ module.exports = {
           "error",
           "interface",
         ],
+        "new-cap": [
+          "error",
+          {
+            capIsNewExceptions: ["Router"],
+          },
+        ],
       },
     },
     {
