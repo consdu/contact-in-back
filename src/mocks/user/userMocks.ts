@@ -11,6 +11,7 @@ export const userLoginMock: UserLoginDataStructure = {
 export const userDatabaseMock: UserDatabaseStructure = {
   ...userLoginMock,
   name: "Admin",
+  password: "$2y$10$LIwKL4wtEBxBvZAAMbL9yO0p0SGcE8f1W3X36qAvBEillVl/T711G",
   _id: new Types.ObjectId(),
 };
 
