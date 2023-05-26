@@ -16,3 +16,23 @@ export interface UserDatabaseStructure extends UserLoginDataStructure {
   name: string;
   _id: Types.ObjectId;
 }
+
+export interface ContactDatabaseStructure {
+  _id: Types.ObjectId;
+  name: string;
+  surname: string;
+  avatar: string;
+  phoneNumber: {
+    mobile: string;
+    landline?: string;
+  };
+  address: string;
+  email: string;
+  socials: {
+    twitter?: string;
+    instagram?: string;
+    linkedin?: string;
+  };
+  birthday: string;
+  user: Types.ObjectId;
+}

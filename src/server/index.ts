@@ -10,6 +10,8 @@ import {
 import ping from "./controllers/ping/pingController.js";
 
 import userRouter from "./routers/user/userRouter.js";
+import { paths } from "../utils/paths.js";
+import { getContacts } from "./controllers/contacts/contactsControllers.js";
 
 const debug = createDebug("contacts-api:root:server");
 
@@ -34,9 +36,11 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
-app.get("/", ping);
+app.get(paths.ping, ping);
 
-app.use("/user", userRouter);
+app.use(paths.user, userRouter);
+
+app.get(paths.contacts, getContacts);
 
 app.use(notFoundError);
 
