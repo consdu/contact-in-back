@@ -4,4 +4,5 @@ export const paths: PathsStructure = {
   ping: "/",
   user: "/user",
   login: "/login",
+  contacts: "/contacts",
 };
