@@ -5,29 +5,27 @@ const contactSchema = new Schema({
   name: {
     type: String,
     required: true,
-    lowercase: true,
   },
   surname: {
     type: String,
     required: true,
-    lowercase: true,
   },
   avatar: {
     type: String,
     lowercase: true,
   },
   phoneNumber: {
-    mobile: { type: String, required: true, lowercase: true },
-    landline: { type: String, lowercase: true },
+    mobile: { type: String, required: true },
+    landline: { type: String },
   },
   email: {
     type: String,
     required: true,
   },
   socials: {
-    twitter: { type: String, lowercase: true },
-    instagram: { type: String, lowercase: true },
-    linkedin: { type: String, lowercase: true },
+    twitter: { type: String },
+    instagram: { type: String },
+    linkedin: { type: String },
   },
   birthday: {
     type: Date,
