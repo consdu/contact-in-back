@@ -12,6 +12,7 @@ import ping from "./controllers/ping/pingController.js";
 import userRouter from "./routers/user/userRouter.js";
 import { paths } from "../utils/paths.js";
 import { getContacts } from "./controllers/contacts/contactsControllers.js";
+import auth from "./middlewares/authMiddleware/authMiddleware.js";
 
 const debug = createDebug("contacts-api:root:server");
 
@@ -40,7 +41,7 @@ app.get(paths.ping, ping);
 
 app.use(paths.user, userRouter);
 
-app.get(paths.contacts, getContacts);
+app.get(paths.contacts, auth, getContacts);
 
 app.use(notFoundError);
 

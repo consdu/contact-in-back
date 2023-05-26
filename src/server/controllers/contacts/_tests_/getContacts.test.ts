@@ -1,5 +1,5 @@
 import type { NextFunction, Response } from "express";
-import type { CustomRequest } from "../types";
+import type { CustomRequest } from "../../../types";
 import { getContacts } from "../contactsControllers";
 import { databaseContactsMock } from "../../../../mocks/contacts/contactsMock.js";
 import Contact from "../../../../database/models/Contact.js";

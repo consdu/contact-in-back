@@ -1,6 +1,6 @@
 import type { Response, NextFunction } from "express";
 import Contact from "../../../database/models/Contact.js";
-import type { CustomRequest } from "./types.js";
+import type { CustomRequest } from "../../types.js";
 
 export const getContacts = async (
   req: CustomRequest,

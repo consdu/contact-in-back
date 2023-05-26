@@ -1,3 +1,4 @@
+import { type JwtPayload } from "jsonwebtoken";
 import type {
   UserDatabaseStructure,
   UserLoginDataStructure,
@@ -17,3 +18,8 @@ export const userDatabaseMock: UserDatabaseStructure = {
 
 export const tokenMock =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsIm5hbWUiOiJhZG1pbiJ9.msGbgu59-Lc0LY4KzjqFzxZ59-i61iDgopl4m1XHyOk";
+
+export const tokenPayloadMock: JwtPayload = {
+  sub: "1",
+  name: "admin",
+};
