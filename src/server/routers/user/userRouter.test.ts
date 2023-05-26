@@ -44,7 +44,7 @@ describe("Given a POST /user/login endpoint", () => {
     await User.create(userDatabaseMock);
   });
 
-  describe("When it receives valid credentials", () => {
+  describe("When it receives a request with valid credentials", () => {
     test("Then it should respond with status code 200 and the user's token", async () => {
       const expectedStatusCode = 200;
 
@@ -64,7 +64,7 @@ describe("Given a POST /user/login endpoint", () => {
     });
   });
 
-  describe("When it receives invalid credentials", () => {
+  describe("When it receives request with invalid credentials", () => {
     test("Then it should respond with 401 and 'Wrong credentials' message", async () => {
       const expectedStatusCode = 401;
       const expectedMessage = "Wrong credentials";
@@ -74,6 +74,23 @@ describe("Given a POST /user/login endpoint", () => {
         .send({
           ...userLoginMock,
           username: "wrong_username",
+        })
+        .expect(expectedStatusCode);
+
+      expect(response.body.error).toBe(expectedMessage);
+    });
+  });
+
+  describe("When it receives an invalid request with an empty password", () => {
+    test("Then it should respond with 400 and 'password is not allowed to be empty' message", async () => {
+      const expectedStatusCode = 400;
+      const expectedMessage = "password is not allowed to be empty";
+
+      const response: CustomErrorResponse = await request(app)
+        .post("/user/login")
+        .send({
+          ...userLoginMock,
+          password: "",
         })
         .expect(expectedStatusCode);
 
