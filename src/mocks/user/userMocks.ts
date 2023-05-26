@@ -17,7 +17,7 @@ export const userDatabaseMock: UserDatabaseStructure = {
 };
 
 export const tokenMock =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbiIsIm5hbWUiOiJhZG1pbiJ9.msGbgu59-Lc0LY4KzjqFzxZ59-i61iDgopl4m1XHyOk";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmNmE5ZGExYjhhMTZiNDVlYWJmNDQiLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE2ODUxMjQ5NzgsImV4cCI6MTY4NTcyOTc3OH0.cJqafyA71ZXm1LwSQKUkS72oxMioHSfNFwKvh2Lkquw";
 
 export const tokenPayloadMock: JwtPayload = {
   sub: "1",
