@@ -1,6 +1,7 @@
 import "../../../utils/loadEnvironments/loadEnvironments.js";
 import request from "supertest";
 import app from "../../index.js";
+import { paths } from "../../../utils/paths.js";
 
 interface CustomResponse {
   body: { message: string };
@@ -14,7 +15,7 @@ describe("Given a GET / endpoint", () => {
       const expectedMessage = "🏓 Pong";
 
       const response: CustomResponse = await request(app)
-        .get("/")
+        .get(paths.ping)
         .expect(expectedStatusCode);
 
       expect(response.body).toStrictEqual({ message: expectedMessage });
