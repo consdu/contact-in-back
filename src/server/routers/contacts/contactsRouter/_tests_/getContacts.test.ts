@@ -57,4 +57,12 @@ describe("Given a GET /contacts endpoint", () => {
       expect(response.body.contacts).toHaveLength(expectedContactsLength);
     });
   });
+
+  describe("When it receives a request with an invalid token,", () => {
+    test("Then it should respond with status 401", async () => {
+      const expectedStatusCode = 401;
+
+      await request(app).get("/contacts").expect(expectedStatusCode);
+    });
+  });
 });
