@@ -30,8 +30,8 @@ describe("Given a deleteContact controller", () => {
   const next = jest.fn();
 
   describe("When it receives a request and the contact exists", () => {
-    test("Then it should call response's method status with 204 and json with 'Contact deleted succesfully'", async () => {
-      const expectedStatusCode = 204;
+    test("Then it should call response's method status with 200 and json with 'Contact deleted succesfully'", async () => {
+      const expectedStatusCode = 200;
       const expectedJsonResponse = {
         message: "Contact deleted succesfully",
       };
