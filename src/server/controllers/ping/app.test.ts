@@ -1,7 +1,7 @@
 import "../../../utils/loadEnvironments/loadEnvironments.js";
 import request from "supertest";
 import app from "../../index.js";
-import { paths } from "../../../utils/paths.js";
+import { paths } from "../../../constants.js";
 
 interface CustomResponse {
   body: { message: string };

@@ -8,6 +8,7 @@ import connectToDatabase from "../../../../../utils/connectToDatabase/connectToD
 import { tokenMock } from "../../../../../mocks/user/userMocks.js";
 import { type ContactDatabaseStructure } from "../../../../../types.js";
 import { databaseContactsMock } from "../../../../../mocks/contacts/contactsMock.js";
+import { paths } from "../../../../../constants.js";
 
 interface CustomResponse {
   body: { contacts: Array<Partial<ContactDatabaseStructure>> };
@@ -40,7 +41,7 @@ describe("Given a GET /contacts endpoint", () => {
       const expectedStatusCode = 200;
 
       await request(app)
-        .get("/contacts")
+        .get(paths.contacts)
         .set("Authorization", `Bearer ${tokenMock}`)
         .expect(expectedStatusCode);
     });
@@ -49,7 +50,7 @@ describe("Given a GET /contacts endpoint", () => {
       const expectedContactsLength = 1;
 
       const response: CustomResponse = await request(app)
-        .get("/contacts")
+        .get(paths.contacts)
         .set("Authorization", `Bearer ${tokenMock}`);
 
       expect(response.body.contacts).toHaveLength(expectedContactsLength);
@@ -60,7 +61,7 @@ describe("Given a GET /contacts endpoint", () => {
     test("Then it should respond with status 401", async () => {
       const expectedStatusCode = 401;
 
-      await request(app).get("/contacts").expect(expectedStatusCode);
+      await request(app).get(paths.contacts).expect(expectedStatusCode);
     });
   });
 });
