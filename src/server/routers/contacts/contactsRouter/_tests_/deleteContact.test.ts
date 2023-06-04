@@ -7,6 +7,7 @@ import connectToDatabase from "../../../../../utils/connectToDatabase/connectToD
 import { databaseContactsMock } from "../../../../../mocks/contacts/contactsMock.js";
 import app from "../../../../index.js";
 import { tokenMock } from "../../../../../mocks/user/userMocks";
+import CustomError from "../../../../../CustomError/CustomError";
 
 const contactId = databaseContactsMock[1]._id.toString();
 
@@ -49,6 +50,29 @@ describe("Given a DELETE /contacts/:contactId endpoint", () => {
         .set("Authorization", `Bearer ${tokenMock}`);
 
       expect(response.body.message).toStrictEqual(expectedMessage);
+    });
+  });
+
+  describe("When it receives a request with a valid token and a non-existing contact id", () => {
+    const expectedError = new CustomError(404, "Contact not found");
+
+    test("Then it should respond with status 404", async () => {
+      const expectedStatusCode = expectedError.statusCode;
+
+      await request(app)
+        .delete(`/contacts/${contactId}`)
+        .set("Authorization", `Bearer ${tokenMock}`)
+        .expect(expectedStatusCode);
+    });
+
+    test("Then it should respond with error 'Contact not found'", async () => {
+      const expectedMessage = expectedError.message;
+
+      const response = await request(app)
+        .delete(`/contacts/${contactId}`)
+        .set("Authorization", `Bearer ${tokenMock}`);
+
+      expect(response.body.error).toStrictEqual(expectedMessage);
     });
   });
 });
