@@ -8,7 +8,7 @@ import {
 import ping from "./controllers/ping/pingController.js";
 
 import userRouter from "./routers/user/userRouter.js";
-import { paths } from "../utils/paths.js";
+import { paths } from "../constants.js";
 import contactsRouter from "./routers/contacts/contactsRouter/contactsRouter.js";
 
 const allowedOrigin = process.env.ALLOWED_ORIGIN;

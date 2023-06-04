@@ -8,6 +8,7 @@ import { databaseContactsMock } from "../../../../../mocks/contacts/contactsMock
 import app from "../../../../index.js";
 import { tokenMock } from "../../../../../mocks/user/userMocks";
 import CustomError from "../../../../../CustomError/CustomError";
+import { paths } from "../../../../../constants.js";
 
 const contactId = databaseContactsMock[1]._id.toString();
 
@@ -37,7 +38,7 @@ describe("Given a DELETE /contacts/:contactId endpoint", () => {
       const expectedStatusCode = 200;
 
       await request(app)
-        .delete(`/contacts/${contactId}`)
+        .delete(`${paths.contacts}/${contactId}`)
         .set("Authorization", `Bearer ${tokenMock}`)
         .expect(expectedStatusCode);
     });
@@ -46,7 +47,7 @@ describe("Given a DELETE /contacts/:contactId endpoint", () => {
       const expectedMessage = "Contact deleted succesfully";
 
       const response = await request(app)
-        .delete(`/contacts/${contactId}`)
+        .delete(`${paths.contacts}/${contactId}`)
         .set("Authorization", `Bearer ${tokenMock}`);
 
       expect(response.body.message).toStrictEqual(expectedMessage);
@@ -60,7 +61,7 @@ describe("Given a DELETE /contacts/:contactId endpoint", () => {
       const expectedStatusCode = expectedError.statusCode;
 
       await request(app)
-        .delete(`/contacts/${contactId}`)
+        .delete(`${paths.contacts}/${contactId}`)
         .set("Authorization", `Bearer ${tokenMock}`)
         .expect(expectedStatusCode);
     });
@@ -69,7 +70,7 @@ describe("Given a DELETE /contacts/:contactId endpoint", () => {
       const expectedMessage = expectedError.message;
 
       const response = await request(app)
-        .delete(`/contacts/${contactId}`)
+        .delete(`${paths.contacts}/${contactId}`)
         .set("Authorization", `Bearer ${tokenMock}`);
 
       expect(response.body.error).toStrictEqual(expectedMessage);
