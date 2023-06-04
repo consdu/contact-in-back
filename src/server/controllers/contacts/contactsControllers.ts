@@ -33,7 +33,7 @@ export const deleteContact = async (
     }).exec();
 
     if (contact) {
-      return res.status(204).json({ message: "Contact deleted succesfully" });
+      return res.status(200).json({ message: "Contact deleted succesfully" });
     }
 
     throw new CustomError(404, "Contact not found");
