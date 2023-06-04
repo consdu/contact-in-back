@@ -39,12 +39,10 @@ describe("Given a GET /contacts endpoint", () => {
     test("Then it should respond with status 200", async () => {
       const expectedStatusCode = 200;
 
-      const response: CustomResponse = await request(app)
+      await request(app)
         .get("/contacts")
         .set("Authorization", `Bearer ${tokenMock}`)
         .expect(expectedStatusCode);
-
-      expect(response.body.contacts).toHaveLength(1);
     });
 
     test("Then it should respond 1 contact", async () => {

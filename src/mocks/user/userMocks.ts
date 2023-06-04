@@ -4,6 +4,7 @@ import type {
   UserLoginDataStructure,
 } from "../../types";
 import { Types } from "mongoose";
+
 export const userLoginMock: UserLoginDataStructure = {
   username: "admin",
   password: "admin",
@@ -17,9 +18,9 @@ export const userDatabaseMock: UserDatabaseStructure = {
 };
 
 export const tokenMock =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmNmE5ZGExYjhhMTZiNDVlYWJmNDQiLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE2ODUxMjQ5NzgsImV4cCI6MTY4NTcyOTc3OH0.cJqafyA71ZXm1LwSQKUkS72oxMioHSfNFwKvh2Lkquw";
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmNmE5ZGExYjhhMTZiNDVlYWJmNDQiLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE2ODU4OTI3ODUsImV4cCI6MTY4NjQ5NzU4NX0.9h_9vmeoP3irpHBhctM0erKY1WG6u4fibPbyqy5_ld8";
 
 export const tokenPayloadMock: JwtPayload = {
   sub: "1",
-  name: "admin",
+  name: "Admin",
 };
