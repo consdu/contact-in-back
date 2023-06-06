@@ -2,6 +2,7 @@ import type { Response, NextFunction } from "express";
 import Contact from "../../../database/models/Contact.js";
 import type { CustomRequest } from "../../types.js";
 import CustomError from "../../../CustomError/CustomError.js";
+import { Types } from "mongoose";
 
 export const getContacts = async (
   req: CustomRequest,
@@ -23,8 +24,10 @@ export const deleteContact = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { userId } = req;
-  const { contactId } = req.params;
+  const {
+    userId,
+    params: { contactId },
+  } = req;
 
   try {
     const contact = await Contact.findOneAndDelete({
@@ -37,6 +40,38 @@ export const deleteContact = async (
     }
 
     throw new CustomError(404, "Contact not found");
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const addContact = async (
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const { userId, body } = req;
+
+  try {
+    const contact = await Contact.create({
+      name: body.name,
+      surname: body.surname,
+      avatar: body.avatar,
+      phoneNumber: {
+        mobile: body.phoneNumber,
+      },
+      address: body.address,
+      email: body.email,
+      socials: {
+        instagram: body.instagram,
+        linkedin: body.linkedin,
+        twitter: body.twitter,
+      },
+      birthday: new Date(body.birthday),
+      user: new Types.ObjectId(userId),
+    });
+
+    return res.status(201).json({ contact });
   } catch (error) {
     next(error);
   }
