@@ -17,8 +17,7 @@ export interface UserDatabaseStructure extends UserLoginDataStructure {
   _id: Types.ObjectId;
 }
 
-export interface ContactDatabaseStructure {
-  _id: Types.ObjectId;
+export interface RequestContactStructure {
   name: string;
   surname: string;
   avatar: string;
@@ -34,5 +33,13 @@ export interface ContactDatabaseStructure {
     linkedin?: string;
   };
   birthday: string;
+}
+
+export interface ContactDatabaseStructure extends RequestContactStructure {
+  _id: Types.ObjectId;
   user: Types.ObjectId;
+}
+export interface ResponseContactStructure extends RequestContactStructure {
+  id: string;
+  user: string;
 }
