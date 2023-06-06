@@ -13,7 +13,7 @@ The API includes authorization, in order to access the protected routes you need
 
 ### Check if server is up
 
-```http
+```text
   GET /
 ```
 
@@ -21,7 +21,7 @@ Response: 🏓 Pong
 
 ### Login
 
-```http
+```text
   POST /user/login
 ```
 
@@ -34,7 +34,7 @@ Response: Wrong credentials or a Json Web Token
 
 ### Get all Contacts
 
-```http
+```text
   GET /contacts
 ```
 
@@ -46,7 +46,7 @@ Response: A collection of contacts
 
 ### Delete contact
 
-```http
+```text
   DELETE /contacts/${id}
 ```
 

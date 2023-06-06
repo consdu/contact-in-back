@@ -101,6 +101,38 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Create contact",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmNmE5ZGExYjhhMTZiNDVlYWJmNDQiLCJuYW1lIjoiQWRtaW4iLCJpYXQiOjE2ODU4OTI3ODUsImV4cCI6MTY4NjQ5NzU4NX0.9h_9vmeoP3irpHBhctM0erKY1WG6u4fibPbyqy5_ld8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"John\",\n    \"surname\": \"Doe\",\n    \"birthday\": \"2000-01-01\",\n    \"avatar\": \"/image.webp\",\n    \"phoneNumber\": \"+34 333444666\",\n    \"address\": \"12 Maple St.\",\n    \"email\": \"johndoe@example.com\",\n    \"twitter\": \"twitter.com/johdoe\",\n    \"instagram\": \"instagram.com/johndoe\",\n    \"linkedin\": \"linkedin.com/johndoe\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/contacts",
+          "host": ["{{base_url}}"],
+          "path": ["contacts"]
+        }
+      },
+      "response": []
     }
   ],
   "event": [
