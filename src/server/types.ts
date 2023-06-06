@@ -1,4 +1,4 @@
-import { type Request } from "express";
+import type { Request, Response } from "express";
 
 export interface CustomRequest extends Request {
   userId: string;
@@ -7,6 +7,8 @@ export interface CustomRequest extends Request {
   };
   body: RequestBodyContactStructure;
 }
+
+export type CustomResponse = Pick<Response, "status" | "json">;
 
 export interface RequestBodyContactStructure {
   name: string;
