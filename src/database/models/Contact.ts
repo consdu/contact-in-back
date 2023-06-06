@@ -18,6 +18,9 @@ const contactSchema = new Schema({
     mobile: { type: String, required: true },
     landline: { type: String },
   },
+  address: {
+    type: String,
+  },
   email: {
     type: String,
     required: true,
