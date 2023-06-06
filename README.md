@@ -55,3 +55,15 @@ Response: A collection of contacts
 | `id`      | `string` | **Required**. Id of contact to delete |
 
 Response: Error or Success message
+
+### Create contact
+
+```text
+  POST /contacts
+```
+
+| Body      | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `contact` | `object` | **Required**. Contact data |
+
+Response: Created contact or error response
