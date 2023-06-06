@@ -1,6 +1,9 @@
 import { Types } from "mongoose";
-import type { ContactDatabaseStructure } from "../../types";
-import { type RequestBodyContactStructure } from "../../server/types";
+import type {
+  ContactDatabaseStructure,
+  RequestContactStructure,
+  ResponseContactStructure,
+} from "../../types";
 
 export const databaseContactsMock: ContactDatabaseStructure[] = [
   {
@@ -33,20 +36,26 @@ export const databaseContactsMock: ContactDatabaseStructure[] = [
   },
 ];
 
-export const requestContactMock: RequestBodyContactStructure = {
+export const requestContactMock: RequestContactStructure = {
   name: "John",
   surname: "Doe",
   avatar: "/image.jpg",
-  phoneNumber: "123 456 789",
+  phoneNumber: {
+    mobile: "123 456 789",
+  },
   address: "Example Street, Chicago, IL",
   email: "johndoe@example.com",
-  twitter: "",
-  instagram: "",
-  linkedin: "",
+  socials: {
+    twitter: "",
+    instagram: "",
+    linkedin: "",
+  },
   birthday: "2000-01-01",
 };
 
-export const responseContactMock: Partial<ContactDatabaseStructure> = {
+export const responseContactMock: ResponseContactStructure = {
+  id: "1",
+  user: "1",
   name: "John",
   surname: "Doe",
   avatar: "/image.jpg",

@@ -54,19 +54,7 @@ export const addContact = async (
 
   try {
     const contact = await Contact.create({
-      name: body.name,
-      surname: body.surname,
-      avatar: body.avatar,
-      phoneNumber: {
-        mobile: body.phoneNumber,
-      },
-      address: body.address,
-      email: body.email,
-      socials: {
-        instagram: body.instagram,
-        linkedin: body.linkedin,
-        twitter: body.twitter,
-      },
+      ...body,
       birthday: new Date(body.birthday),
       user: new Types.ObjectId(userId),
     });
