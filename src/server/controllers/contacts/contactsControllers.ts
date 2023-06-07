@@ -10,9 +10,13 @@ export const getContacts = async (
   next: NextFunction
 ) => {
   const { userId } = req;
+  const { limit } = req.query;
 
   try {
-    const contacts = await Contact.find({ user: userId }).limit(10).exec();
+    const contacts = await Contact.find({ user: userId })
+      .limit(Number.parseInt(limit, 10))
+      .exec();
+
     res.status(200).json({ contacts });
   } catch (error) {
     next(error);

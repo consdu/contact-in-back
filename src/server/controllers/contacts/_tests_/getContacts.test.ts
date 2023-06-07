@@ -5,6 +5,7 @@ import { databaseContactsMock } from "../../../../mocks/contacts/contactsMock.js
 import Contact from "../../../../database/models/Contact.js";
 
 const userId = "646f6a0da1b8a16b45eabf43";
+const limit = "10";
 
 const userContactsByIdMock = databaseContactsMock.filter(
   (contact) => contact.user.toString() === userId
@@ -19,6 +20,9 @@ beforeEach(() => {
 describe("Given a getContacts controller", () => {
   const req: Partial<CustomRequest> = {
     userId,
+    query: {
+      limit,
+    },
   };
 
   const res: CustomResponse = {
