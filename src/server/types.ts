@@ -6,6 +6,9 @@ export interface CustomRequest extends Request {
   params: {
     contactId: string;
   };
+  query: {
+    limit: string;
+  };
   body: RequestContactStructure;
 }
 
