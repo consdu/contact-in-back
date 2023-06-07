@@ -48,4 +48,15 @@ describe("Given a POST /contacts endpoint", () => {
       expect(response.body.contact.name).toBe(contact.name);
     });
   });
+
+  describe("When it receives a request with an invalid contact", () => {
+    test("Then it should respond with status code 400", async () => {
+      const expectedStatusCode = 400;
+
+      await request(app)
+        .post(`${paths.contacts}`)
+        .set("Authorization", `Bearer ${tokenMock}`)
+        .expect(expectedStatusCode);
+    });
+  });
 });
