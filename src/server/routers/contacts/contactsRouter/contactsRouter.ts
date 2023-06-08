@@ -3,7 +3,7 @@ import {
   addContact,
   deleteContact,
   getContacts,
-  searchContact,
+  searchContacts,
 } from "../../../controllers/contacts/contactsControllers.js";
 import auth from "../../../middlewares/authMiddleware/authMiddleware.js";
 import { validate } from "express-validation";
@@ -14,7 +14,7 @@ const contactsRouter = Router();
 
 contactsRouter.get("/", auth, getContacts);
 
-contactsRouter.get(paths.search, auth, searchContact);
+contactsRouter.get(paths.search, auth, searchContacts);
 
 contactsRouter.delete("/:contactId", auth, deleteContact);
 

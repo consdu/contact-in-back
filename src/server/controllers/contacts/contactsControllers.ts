@@ -16,7 +16,7 @@ export const getContacts = async (
 
   try {
     const contacts = await Contact.find({ user: userId })
-      .limit(Number.parseInt(limit, 10))
+      .limit(Number.parseInt(limit!, 10))
       .exec();
 
     res.status(200).json({ contacts });
@@ -71,7 +71,7 @@ export const addContact = async (
   }
 };
 
-export const searchContact = async (
+export const searchContacts = async (
   req: CustomRequest,
   res: Response,
   next: NextFunction
@@ -84,12 +84,12 @@ export const searchContact = async (
   const pattern = new RegExp(`.*${name!}.*`, "i");
 
   try {
-    const contacts = await Contact.find({ user: userId }).find({
+    const contacts = await Contact.find({
       $or: [
         { name: pattern, user: userId },
         { surname: pattern, user: userId },
       ],
-    });
+    }).exec();
 
     return res.status(200).json({ contacts });
   } catch (error) {
