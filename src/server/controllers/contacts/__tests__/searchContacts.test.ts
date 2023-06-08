@@ -67,4 +67,22 @@ describe("Given a searchContacts controller", () => {
       expect(res.json).toHaveBeenCalledWith(expectedBodyResponse);
     });
   });
+
+  describe("When it receives a request with a user id and the exec functions rejects with a 'Database error'", () => {
+    test("Then it should call the next function with error 'Database error", async () => {
+      const expectedError = new Error("Database error");
+
+      Contact.find = jest.fn().mockReturnValue({
+        exec: jest.fn().mockRejectedValue(expectedError),
+      });
+
+      await searchContacts(
+        req as CustomRequest,
+        res as Response,
+        next as NextFunction
+      );
+
+      expect(next).toHaveBeenCalledWith(expectedError);
+    });
+  });
 });
