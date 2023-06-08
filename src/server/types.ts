@@ -8,6 +8,7 @@ export interface CustomRequest extends Request {
   };
   query: {
     limit: string;
+    name?: string;
   };
   body: RequestContactStructure;
 }
