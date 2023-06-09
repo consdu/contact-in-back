@@ -9,12 +9,14 @@ export const getContacts = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { userId } = req;
-  const { limit } = req.query;
+  const {
+    userId,
+    query: { limit },
+  } = req;
 
   try {
     const contacts = await Contact.find({ user: userId })
-      .limit(Number.parseInt(limit, 10))
+      .limit(Number.parseInt(limit!, 10))
       .exec();
 
     res.status(200).json({ contacts });
@@ -64,6 +66,32 @@ export const addContact = async (
     });
 
     return res.status(201).json({ contact });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const searchContacts = async (
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const {
+    userId,
+    query: { name },
+  } = req;
+
+  const pattern = new RegExp(`.*${name!}.*`, "i");
+
+  try {
+    const contacts = await Contact.find({
+      $or: [
+        { name: pattern, user: userId },
+        { surname: pattern, user: userId },
+      ],
+    }).exec();
+
+    return res.status(200).json({ contacts });
   } catch (error) {
     next(error);
   }

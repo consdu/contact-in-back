@@ -5,4 +5,5 @@ export const paths: PathsStructure = {
   user: "/user",
   login: "/login",
   contacts: "/contacts",
+  search: "/search",
 };
