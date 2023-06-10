@@ -1,8 +1,8 @@
 import type { Response, NextFunction } from "express";
+import { Types } from "mongoose";
 import Contact from "../../../database/models/Contact.js";
 import type { CustomRequest } from "../../types.js";
 import CustomError from "../../../CustomError/CustomError.js";
-import { Types } from "mongoose";
 
 export const getContacts = async (
   req: CustomRequest,
@@ -41,11 +41,11 @@ export const deleteContact = async (
       user: userId,
     }).exec();
 
-    if (contact) {
-      return res.status(200).json({ message: "Contact deleted succesfully" });
+    if (!contact) {
+      throw new CustomError(404, "Contact not found");
     }
 
-    throw new CustomError(404, "Contact not found");
+    return res.status(200).json({ message: "Contact deleted succesfully" });
   } catch (error) {
     next(error);
   }
@@ -93,6 +93,33 @@ export const searchContacts = async (
 
     return res.status(200).json({ contacts });
   } catch (error) {
+    next(error);
+  }
+};
+
+export const getContact = async (
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const {
+    userId,
+    params: { contactId },
+  } = req;
+
+  try {
+    const contact = await Contact.findOne({
+      _id: contactId,
+      user: userId,
+    }).exec();
+
+    if (!contact) {
+      throw new Error();
+    }
+
+    return res.status(200).json({ contact });
+  } catch {
+    const error = new CustomError(404, "Contact not found");
     next(error);
   }
 };
