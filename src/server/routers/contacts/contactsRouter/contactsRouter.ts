@@ -15,7 +15,7 @@ const contactsRouter = Router();
 
 contactsRouter.get("/", auth, getContacts);
 
-contactsRouter.get("/:contactId", auth, getContact);
+contactsRouter.get("/id/:contactId", auth, getContact);
 
 contactsRouter.get(paths.search, auth, searchContacts);
 

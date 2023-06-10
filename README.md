@@ -67,3 +67,27 @@ Response: Error or Success message
 | `contact` | `object` | **Required**. Contact data |
 
 Response: Created contact or error response
+
+### Search contacts
+
+```text
+  GET /contacts/search/?name=*
+```
+
+| Query param | Type     | Description                    |
+| :---------- | :------- | :----------------------------- |
+| `name`      | `string` | **Required**. Minimum a letter |
+
+Response: Collection of contacts matching where name or surname matches includes the pattern
+
+### Get one contact
+
+```text
+  GET /contact/id/:contactId
+```
+
+| Param       | Type     | Description                            |
+| :---------- | :------- | :------------------------------------- |
+| `contactId` | `string` | **Required**. Contact's id to retrieve |
+
+Response: A contact whose id matches the param or an error with message 'no contact found'
