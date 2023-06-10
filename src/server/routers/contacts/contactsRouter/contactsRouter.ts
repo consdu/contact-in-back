@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   addContact,
   deleteContact,
+  getContact,
   getContacts,
   searchContacts,
 } from "../../../controllers/contacts/contactsControllers.js";
@@ -13,6 +14,8 @@ import { paths } from "../../../../constants.js";
 const contactsRouter = Router();
 
 contactsRouter.get("/", auth, getContacts);
+
+contactsRouter.get("/:contactId", auth, getContact);
 
 contactsRouter.get(paths.search, auth, searchContacts);
 
