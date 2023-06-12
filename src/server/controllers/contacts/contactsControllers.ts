@@ -22,7 +22,7 @@ export const getContacts = async (
 
     const totalCount = await Contact.count({
       user: userId,
-    });
+    }).exec();
 
     res.status(200).json({ contacts, totalCount });
   } catch (error) {

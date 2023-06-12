@@ -6,6 +6,7 @@ import Contact from "../../../../database/models/Contact.js";
 
 const userId = "646f6a0da1b8a16b45eabf43";
 const limit = "10";
+const totalCount = 10;
 
 const userContactsByIdMock = databaseContactsMock.filter(
   (contact) => contact.user.toString() === userId
@@ -35,8 +36,14 @@ describe("Given a getContacts controller", () => {
   describe("When it receives a request with a user id", () => {
     Contact.find = jest.fn().mockReturnValue({
       limit: jest.fn().mockReturnValue({
-        exec: jest.fn().mockResolvedValue(userContactsByIdMock),
+        sort: jest.fn().mockReturnValue({
+          exec: jest.fn().mockResolvedValue(userContactsByIdMock),
+        }),
       }),
+    });
+
+    Contact.count = jest.fn().mockReturnValue({
+      exec: jest.fn().mockResolvedValue(totalCount),
     });
 
     test("Then it should call the response's method status with 200", async () => {
@@ -52,7 +59,10 @@ describe("Given a getContacts controller", () => {
     });
 
     test("Then it should call the response's json status with the user's collection of contacts", async () => {
-      const expectedBodyResponse = { contacts: userContactsByIdMock };
+      const expectedBodyResponse = {
+        contacts: userContactsByIdMock,
+        totalCount,
+      };
 
       await getContacts(
         req as CustomRequest,
@@ -70,7 +80,9 @@ describe("Given a getContacts controller", () => {
 
       Contact.find = jest.fn().mockReturnValue({
         limit: jest.fn().mockReturnValue({
-          exec: jest.fn().mockRejectedValue(expectedError),
+          sort: jest.fn().mockReturnValue({
+            exec: jest.fn().mockRejectedValue(expectedError),
+          }),
         }),
       });
 
