@@ -17,9 +17,14 @@ export const getContacts = async (
   try {
     const contacts = await Contact.find({ user: userId })
       .limit(Number.parseInt(limit!, 10))
+      .sort({ _id: -1 })
       .exec();
 
-    res.status(200).json({ contacts });
+    const totalCount = await Contact.count({
+      user: userId,
+    });
+
+    res.status(200).json({ contacts, totalCount });
   } catch (error) {
     next(error);
   }
