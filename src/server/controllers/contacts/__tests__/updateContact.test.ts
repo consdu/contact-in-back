@@ -43,4 +43,20 @@ describe("Given an updateContact controller", () => {
       expect(res.json).toHaveBeenCalledWith({ message: expectedMessage });
     });
   });
+
+  describe("When it receives a request with a contact and the there is a database error", () => {
+    test("Then it should call the next function with the error", async () => {
+      const error = new Error("Server internal error");
+
+      Contact.findByIdAndUpdate = jest.fn().mockRejectedValue(error);
+
+      await updateContact(
+        req as CustomUpdateRequest,
+        res as Response,
+        next as NextFunction
+      );
+
+      expect(next).toHaveBeenCalledWith(error);
+    });
+  });
 });
