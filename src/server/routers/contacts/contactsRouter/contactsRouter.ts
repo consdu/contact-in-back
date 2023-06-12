@@ -5,6 +5,7 @@ import {
   getContact,
   getContacts,
   searchContacts,
+  updateContact,
 } from "../../../controllers/contacts/contactsControllers.js";
 import auth from "../../../middlewares/authMiddleware/authMiddleware.js";
 import { validate } from "express-validation";
@@ -20,6 +21,8 @@ contactsRouter.get("/id/:contactId", auth, getContact);
 contactsRouter.get(paths.search, auth, searchContacts);
 
 contactsRouter.delete("/:contactId", auth, deleteContact);
+
+contactsRouter.put("/", auth, updateContact);
 
 contactsRouter.post(
   "/",
