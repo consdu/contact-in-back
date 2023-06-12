@@ -54,8 +54,8 @@ export const requestContactMock: RequestContactStructure = {
 };
 
 export const responseContactMock: ResponseContactStructure = {
-  id: "1",
-  user: "1",
+  id: "64708e362ae55ae082cebe8f",
+  user: "646f6a0da1b8a16b45eabf43",
   name: "John",
   surname: "Doe",
   avatar: "/image.jpg",

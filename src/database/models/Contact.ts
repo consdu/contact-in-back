@@ -12,7 +12,6 @@ const contactSchema = new Schema({
   },
   avatar: {
     type: String,
-    lowercase: true,
   },
   phoneNumber: {
     mobile: { type: String, required: true },
