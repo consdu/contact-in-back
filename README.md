@@ -91,3 +91,15 @@ Response: Collection of contacts matching where name or surname matches includes
 | `contactId` | `string` | **Required**. Contact's id to retrieve |
 
 Response: A contact whose id matches the param or an error with message 'no contact found'
+
+### Update a contact
+
+```text
+  PUT /contact/
+```
+
+| Body      | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `contact` | `object` | **Required**. Contact data |
+
+Response: A message confirming the contact was updated
