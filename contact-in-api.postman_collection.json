@@ -133,6 +133,90 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "Search contacts",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmNmEwZGExYjhhMTZiNDVlYWJmNDMiLCJuYW1lIjoiRGFuIEFicmFtb3YiLCJpYXQiOjE2ODYyNDE4OTF9.6qHAcDGFXTfJloWEDaPOGPzXoO4WorTpcoK00cY_SHQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/contacts/search/?name=HA",
+          "host": ["{{base_url}}"],
+          "path": ["contacts", "search", ""],
+          "query": [
+            {
+              "key": "name",
+              "value": "HA"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Contact",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmNmEwZGExYjhhMTZiNDVlYWJmNDMiLCJuYW1lIjoiRGFuIEFicmFtb3YiLCJpYXQiOjE2ODYyNDE4OTF9.6qHAcDGFXTfJloWEDaPOGPzXoO4WorTpcoK00cY_SHQ",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/contacts/64708e362ae55ae082cebe91",
+          "host": ["{{base_url}}"],
+          "path": ["contacts", "64708e362ae55ae082cebe91"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update contact",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmNmEwZGExYjhhMTZiNDVlYWJmNDMiLCJuYW1lIjoiRGFuIEFicmFtb3YiLCJpYXQiOjE2ODY1NjQ5OTd9.5nrf5SngEkVDUjpOyZzSk4fxuFWvh0AOn3kqOAm_tKg",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n            \"phoneNumber\": {\n                \"mobile\": \"1234567890\",\n                \"landline\": \"9876543210\"\n            },\n            \"socials\": {\n                \"twitter\": \"@johndoe\",\n                \"instagram\": \"@johndoe\",\n                \"linkedin\": \"John Doe\"\n            },\n            \"name\": \"John\",\n            \"surname\": \"Bro\",\n            \"avatar\": \"https://media.discordapp.net/attachments/1080858531940544657/1115243402557149225/male-16_60X60.webp\",\n            \"address\": \"123 Main Street\",\n            \"email\": \"john.doe@example.com\",\n            \"birthday\": \"1992-10-09T23:00:00.000Z\",\n            \"user\": \"646f6a0da1b8a16b45eabf43\",\n            \"id\": \"64708e362ae55ae082cebe8f\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/contacts",
+          "host": ["{{base_url}}"],
+          "path": ["contacts"]
+        }
+      },
+      "response": []
     }
   ],
   "event": [
