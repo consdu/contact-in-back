@@ -6,8 +6,8 @@ import Contact from "../../../../../database/models/Contact.js";
 import connectToDatabase from "../../../../../utils/connectToDatabase/connectToDatabase.js";
 import { paths } from "../../../../../constants.js";
 import app from "../../../../index.js";
-import { tokenMock } from "../../../../../mocks/user/userMocks";
-import { requestContactMock } from "../../../../../mocks/contacts/contactsMock";
+import { tokenMock } from "../../../../../mocks/user/userMocks.js";
+import { requestContactMock } from "../../../../../mocks/contacts/contactsMock.js";
 
 let server: MongoMemoryServer;
 

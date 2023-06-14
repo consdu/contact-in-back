@@ -6,8 +6,8 @@ import Contact from "../../../../../database/models/Contact.js";
 import connectToDatabase from "../../../../../utils/connectToDatabase/connectToDatabase.js";
 import { databaseContactsMock } from "../../../../../mocks/contacts/contactsMock.js";
 import app from "../../../../index.js";
-import { tokenMock } from "../../../../../mocks/user/userMocks";
-import CustomError from "../../../../../CustomError/CustomError";
+import { tokenMock } from "../../../../../mocks/user/userMocks.js";
+import CustomError from "../../../../../CustomError/CustomError.js";
 import { paths } from "../../../../../constants.js";
 
 const contactId = databaseContactsMock[1]._id.toString();
