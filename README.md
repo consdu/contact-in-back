@@ -9,6 +9,14 @@ The application is structured as follows:
 
 The API includes authorization, in order to access the protected routes you need to login with valid credentials and send your token on each request.
 
+---
+
+## Metrics
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=consdu_contact-in-back&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=consdu_contact-in-back) [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=consdu_contact-in-back&metric=coverage)](https://sonarcloud.io/summary/new_code?id=consdu_contact-in-back) [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=consdu_contact-in-back&metric=bugs)](https://sonarcloud.io/summary/new_code?id=consdu_contact-in-back) [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=consdu_contact-in-back&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=consdu_contact-in-back) [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=consdu_contact-in-back&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=consdu_contact-in-back)
+
+---
+
 ## API Reference
 
 ### Check if server is up
